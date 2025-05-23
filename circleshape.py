@@ -12,6 +12,7 @@ class CircleShape(pygame.sprite.Sprite):
         self.position = pygame.Vector2(x, y)
         self.velocity = pygame.Vector2(0, 0)
         self.radius = radius
+        
 
     def is_coliding(self,another):
         distance = self.position.distance_to(another.position)
