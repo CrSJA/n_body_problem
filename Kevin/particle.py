@@ -8,7 +8,7 @@ class particle(CircleShape):
     def __init__(self, x, y, radius,system,mass=1,charge=0):
         super().__init__(x, y, radius)
         self.mass=mass
-        self.charche=charge
+        self.charge=charge
         self.system=system
         self.system.append(self)
     

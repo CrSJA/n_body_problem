@@ -8,6 +8,7 @@ from system import System
 from gravedad import Gravedad
 from gravedad_planeta import Tierra
 from campo_gravedad import*
+from campo_electrico import*
 def main():
     
     pg.init()
@@ -23,17 +24,15 @@ def main():
     System.containers = (updatable)
     #Gravedad.containers = (updatable)
     Tierra.containers=(updatable)
+    Campo_Electrico.containers=(updatable)
     Campo_Gravedad.containers=(updatable)
     #playe=player(SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
     objects=[]
    
-    sol=particle(600,350,100,objects, mass=10000000)
+    P1=particle(500,350,20,objects,charge=1)
+    P2=particle(700,350,20,objects, charge=-1)
     
-    for i in range(8): 
-        p=particle(1200*random.random(),700*random.random(),20,objects, mass=1000)
-        p.velocity=100*pg.Vector2(random.random(),random.random())
-    #Tierra(objects)
-    Campo_Gravedad(objects)
+    Campo_Electrico(objects)
 
     while True:
         screen.fill(("black"))
