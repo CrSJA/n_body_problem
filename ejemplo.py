@@ -26,13 +26,16 @@ def main():
     Tierra.containers=(updatable)
     Campo_Electrico.containers=(updatable)
     Campo_Gravedad.containers=(updatable)
-    #playe=player(SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
+ 
+    
     objects=[]
    
     P1=particle(500,350,20,objects,charge=1)
-    P2=particle(700,350,20,objects, charge=-1)
+    P2=particle(700,350,20,objects,charge=-1)
     
     Campo_Electrico(objects)
+
+    particle_list = list(particles)
 
     while True:
         screen.fill(("black"))
@@ -43,28 +46,25 @@ def main():
         
         updatable.update(dt)   # updates and draws everiting
        
-        '''
-        for a in asteroids:
-            if a.is_coliding(playe):
-                print("game over")
-                return
-        '''
 
-        '''
-        for asteroir in asteroids:
-            for bullet in shoots:
-                if asteroir.is_coliding(bullet):
-                    asteroir.split()
-                    bullet.kill()  
-                    pass
-        '''
-        
         for a in drawable:
             a.draw(screen)
         
+
+
+
+        for i in range(len(particle_list)):
+            for j in range(i + 1, len(particle_list)):
+                p = particle_list[i]
+                a = particle_list[j]
+                if p.is_colliding(a):
+                    p.solve_collision(a)
+
+
+        
+
         pg.display.flip()
         dt = (clok.tick(60))/1000
-
 
 if __name__ =="__main__":
     main()
