@@ -9,6 +9,13 @@ from gravedad import Gravedad
 from gravedad_planeta import Tierra
 from campo_gravedad import*
 from campo_electrico import*
+
+def physics_step(group, dt, substeps=3):  # introduce una actualizacion fisica al sistema
+    sub_dt = dt / substeps
+    for _ in range(substeps):
+        group.update(sub_dt)
+
+
 def main():
     
     pg.init()
@@ -43,8 +50,12 @@ def main():
             if event.type == pg.QUIT:
                 return
             
-        
-        updatable.update(dt)   # updates and draws everiting
+
+
+
+        physics_step(updatable, dt, substeps=10) # updates an draws everiting whith substeps
+
+        #updatable.update(dt)   # updates and draws everiting
        
 
         for a in drawable:

@@ -17,8 +17,9 @@ class particle(CircleShape):
         pygame.draw.circle(screen,"white",(self.position),self.radius,2)
     
     def update(self,dt):
-        self.velocity +=self.acceleration*dt
-        self.position +=self.velocity*dt
+        self.velocity += self.acceleration * dt
+        self.position += self.velocity * dt
+        self.acceleration = pygame.Vector2()  # Reset for next frame
 
 
     def __solve_overlap(self, another):
@@ -64,7 +65,7 @@ class particle(CircleShape):
         if velocity_along_normal > 0:
             return
 
-        restitution = 1.0  # Elastic collision
+        restitution = 1  # Elastic collision
         impulse_mag = -(1 + restitution) * velocity_along_normal
         impulse_mag /= (1 / self.mass + 1 / another.mass)
 
