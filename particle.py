@@ -65,7 +65,7 @@ class particle(CircleShape):
         if velocity_along_normal > 0:
             return
 
-        restitution = 1  # Elastic collision
+        restitution = 0.95  # Elastic collision
         impulse_mag = -(1 + restitution) * velocity_along_normal
         impulse_mag /= (1 / self.mass + 1 / another.mass)
 

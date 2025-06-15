@@ -17,7 +17,6 @@ def physics_step(group, dt, substeps=3):  # introduce una actualizacion fisica a
 
 
 def main():
-    
     pg.init()
     screen = pg.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
     clok =  pg.time.Clock()
@@ -50,19 +49,12 @@ def main():
             if event.type == pg.QUIT:
                 return
             
-
-
-
         physics_step(updatable, dt, substeps=10) # updates an draws everiting whith substeps
 
         #updatable.update(dt)   # updates and draws everiting
-       
 
         for a in drawable:
             a.draw(screen)
-        
-
-
 
         for i in range(len(particle_list)):
             for j in range(i + 1, len(particle_list)):
@@ -70,9 +62,6 @@ def main():
                 a = particle_list[j]
                 if p.is_colliding(a):
                     p.solve_collision(a)
-
-
-        
 
         pg.display.flip()
         dt = (clok.tick(60))/1000
