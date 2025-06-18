@@ -1,14 +1,9 @@
 #!/usr/bin/env python3
 
 import pygame as pg
-from random import random
 from constants import *
 from particle import particle
-from system import System
-from gravedad import Gravedad
-from gravedad_planeta import Tierra
-from campo_gravedad import*
-from campo_electrico import*
+from campos import*
 
 def physics_step(group, dt, substeps=3):  # introduce una actualizacion fisica al sistema
     sub_dt = dt / substeps
@@ -27,11 +22,7 @@ def main():
     particles=pg.sprite.Group()
 
     particle.containers = (particles,updatable,drawable)
-    System.containers = (updatable)
-    #Gravedad.containers = (updatable)
-    Tierra.containers=(updatable)
     Campo_Electrico.containers=(updatable)
-    Campo_Gravedad.containers=(updatable)
  
     
     objects=[]

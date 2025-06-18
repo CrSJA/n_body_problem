@@ -1,8 +1,6 @@
 from circleshape import *
 from constants import *
-from system import *
 import pygame as pg
-import random
 
 
 class particle(CircleShape):
