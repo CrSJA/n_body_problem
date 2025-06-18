@@ -1,6 +1,5 @@
 from circleshape import *
 from constants import *
-import random
 import pygame as pg
 
 class Field(pg.sprite.Sprite):
